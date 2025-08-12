@@ -22,6 +22,8 @@
     <a href="https://github.com/Julian-Graf/Solar-Earnings-Estimator/issues/new/choose">Report Bug</a>
  </p>
 
+<h4 align="center">👩‍💻 Team Members -   Amrutha M · Ansika Babu · Julian Graf</h4>
+
 <p align="center">
   Our objective is to combat the lack of
   awareness among homeowners about the
