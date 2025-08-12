@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-sm">
+    <h1 class="display-3 text-center m-4"><i class="bi bi-sun me-2"></i>Solar Earnings Estimator</h1>
+    <div class="accordion" id="accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    <i class="bi bi-info-circle me-2"></i>Info
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion">
+                <div class="accordion-body">
+                    <p style="text-align: justify;">
+                        Ready to take control of your energy bills and make a positive impact on the environment?
+                        Discover the power of solar energy! Many places now offer programs that allow you to
+                        generate your own clean energy and sell any excess power back to the grid at premium rates.
+                        Imagine your meter spinning backward, your bills shrinking,
+                        and your carbon footprint diminishing.
+                        Calculate your savings potential today in just three easy steps.
+                        Join the solar revolution for a brighter, eco-friendly future!
+                    </p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary float-right" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Get started
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <i class="bi bi-geo-alt me-2"></i>Your location
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                <div class="accordion-body">
+                    <div id="map"></div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary float-right mt-3" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <i class="bi bi-house me-2"></i>Panel Configuration
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                <div class="accordion-body">
+                    <form>
+                        <div class="input-group" style="max-width: 450px;">
+
+                            <div class="input-group">
+                                <label for="i_size" class="form-label mt-3">Solar panel size in m²:</label>
+                                <input type="number" class="form-control mt-2 ms-2" id="i_size" name="i_size" min="0"
+                                       pattern="[0-9]+\.?[0-9]*"
+                                       placeholder="Panel size" aria-label="Panel size" aria-describedby="m2_addon"
+                                       required>
+                                <span class="input-group-text mt-2" id="m2_addon">m²</span>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="i_size" class="form-label mt-3">Electricity price in R/kWh:</label>
+                                <input type="number" class="form-control mt-2 ms-2" id="i_price" name="i_price" min="0"
+                                       pattern="[0-9]+\.?[0-9]*"
+                                       placeholder="Electricity price" aria-label="Electricity price"
+                                       aria-describedby="rkwh_addon"
+                                       required>
+                                <span class="input-group-text mt-2" id="rkwh_addon">R/kWh</span>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <input type="submit" value="Calculate my savings" class="btn btn-primary mt-2"
+                                   data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                   aria-controls="collapseFour">
+                            <!--button class="btn btn-primary float-right mt-3" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Next
+                            </button-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <i class="bi bi-cash me-2"></i>Your Savings
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                <div class="accordion-body">
+                    <p>
+                        With your solar panels you could make up to <b>15.2 KWH</b> per month.<br>
+                        This will give you a yearly saving of <b>R 8500</b>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+                // Get element references
+                var confirmBtn = document.getElementById('confirmPosition');
+                var onClickPositionView = document.getElementById('onClickPositionView');
+                var onIdlePositionView = document.getElementById('onIdlePositionView');
+
+                // Initialize locationPicker plugin
+                var lp = new locationPicker('map', {
+                setCurrentPosition: true, // You can omit this, defaults to true
+                }, {
+                zoom: 15 // You can set any google map options here, zoom defaults to 15
+                });
+
+                // Listen to button onclick event
+                //confirmBtn.onclick = function () {
+                // Get current location and show it in HTML
+                //var location = lp.getMarkerPosition();
+                //onClickPositionView.innerHTML = 'The chosen location is ' + location.lat + ',' + location.lng;
+                  //  notifyHost({value: "test", dataType: "json"});
+
+                // };
+
+                // Listen to map idle event, listening to idle event more accurate than listening to ondrag event
+                google.maps.event.addListener(lp.map, 'idle', function (event) {
+                // Get current location and show it in HTML
+                var location = lp.getMarkerPosition();
+                //onIdlePositionView.innerHTML = 'The chosen location is ' + location.lat + ',' + location.lng;
+                  notifyHost({value: location.lat + ";" + location.lng, dataType: "json"});
+                });
+
+</script>
+{% endblock %}
